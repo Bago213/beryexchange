@@ -1,0 +1,17 @@
+/home/deploy/.rbenv/versions/2.2.2/bin/ruby -r ./siteconf20171211-7714-11n6wq3.rb extconf.rb
+checking for rb_exec_recursive() in ruby.h... yes
+checking for rb_exec_recursive_paired() in ruby.h... yes
+checking for rb_proc_lambda_p() in ruby.h... yes
+checking for rb_ary_resize() in ruby.h... yes
+checking for rb_obj_hide() in ruby.h... yes
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling rbtree.c
+compiling dict.c
+linking shared-object rbtree.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 rbtree.so ./.gem.20171211-7714-1w00ojb

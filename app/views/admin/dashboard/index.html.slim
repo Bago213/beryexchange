@@ -1,0 +1,142 @@
+.row
+  .col-lg-12
+    h1.page-header
+      | Dashboard
+.row
+  .col-lg-3.col-md-6
+    .panel.panel-primary
+      .panel-heading
+        .row
+          .col-xs-3
+            i.fa.fa-users.fa-5x
+          .col-xs-9.text-right
+            .huge
+              = @register_count
+            div
+              | Members!
+      a[href="#"]
+
+      .panel-footer
+        span.pull-left
+          | View Details
+        span.pull-right
+          i.fa.fa-arrow-circle-right
+        .clearfix
+  .col-lg-3.col-md-6
+    .panel.panel-green
+      .panel-heading
+        .row
+          .col-xs-3
+            i.fa.fa-tasks.fa-5x
+          .col-xs-9.text-right
+            .huge
+              | 12
+            div
+              | Withdrawal Requests!
+      a[href="#"]
+
+      .panel-footer
+        span.pull-left
+          | View Details
+        span.pull-right
+          i.fa.fa-arrow-circle-right
+        .clearfix
+  .col-lg-3.col-md-6
+    .panel.panel-yellow
+      .panel-heading
+        .row
+          .col-xs-3
+            i.fa.fa-shopping-cart.fa-5x
+          .col-xs-9.text-right
+            .huge
+              | 124
+            div
+              | Balance!
+      a[href="#"]
+
+      .panel-footer
+        span.pull-left
+          | View Details
+        span.pull-right
+          i.fa.fa-arrow-circle-right
+        .clearfix
+  .col-lg-3.col-md-6
+    .panel.panel-red
+      .panel-heading
+        .row
+          .col-xs-3
+            i.fa.fa-support.fa-5x
+          .col-xs-9.text-right
+            .huge
+              | 13
+            div
+              | Support Tickets!
+      a[href="#"]
+
+      .panel-footer
+        span.pull-left
+          | View Details
+        span.pull-right
+          i.fa.fa-arrow-circle-right
+        .clearfix
+.row
+  .col-lg-8
+    .panel.panel-primary
+      .panel-heading Currencies Summary
+      .panel-body
+        table.table.table-condensed
+          thead: tr
+            th Name
+            th.text-right Locked
+            th.text-right Balance
+            th.text-right Sum
+            th.text-right Hot-Wallet Balance
+            th.text-right Cold-Wallet Balance
+
+          tbody
+            - @currencies_summary.each do |c|
+              tr
+                td: b = c[:name]
+                td.text-right = c[:locked]
+                td.text-right = c[:balance]
+                td.text-right = c[:sum]
+
+                - if c[:coinable]
+                  td.text-right = c[:hot]
+                  - if c[:hot] == 'N/A'
+                    td.text-right = c[:hot]
+                  - else
+                    td.text-right = c[:sum] - c[:hot]
+                - else
+                  td.text-right N/A
+                  td.text-right N/A
+      .panel-footer
+        span Tips: Locked + Balance = Sum | Hot-Wallet + Cold-Wallet = Sum
+  .col-lg-4: .panel.panel-primary
+    .panel-heading Daemon Statuses
+    .panel-body
+      table.table.table-condensed
+        thead: tr
+          th Name
+          th State
+        tbody
+          - @daemon_statuses.each do |daemon, state|
+            tr
+              - if state == :not_exists
+                td.text-danger: b = daemon
+                td.text-danger: b = state
+              - else
+                td.text-info = daemon
+                td.text-info = state
+.row
+  .col-lg-12: .panel.panel-primary
+    .panel-heading Exchange Summary
+    .panel-body
+      table.table.table-condensed
+        thead: tr
+          th Index
+          th Count
+        tbody
+          tr
+            td Register Count
+            td = @register_count

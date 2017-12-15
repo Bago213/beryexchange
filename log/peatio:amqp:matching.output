@@ -1,0 +1,6 @@
+peatio:amqp:matching: process with pid 13830 started.
+I, [2017-12-11T17:25:50.513089 #13830]  INFO -- : Connected to AMQP broker (prefetch: default)
+D, [2017-12-11T17:25:50.533472 #13830] DEBUG -- : orderbook broadcast: {:action=>"new", :market=>"btccny", :side=>:ask}
+D, [2017-12-11T17:25:50.551815 #13830] DEBUG -- : orderbook broadcast: {:action=>"new", :market=>"btccny", :side=>:bid}
+I, [2017-12-11T17:25:50.609499 #13830]  INFO -- : btccny engine already started. mode=run
+I, [2017-12-11T17:25:50.609604 #13830]  INFO -- : All engines reloaded.

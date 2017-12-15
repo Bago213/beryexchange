@@ -1,0 +1,2 @@
+peatio:amqp:market_data: process with pid 13701 started.
+I, [2017-12-11T17:25:41.306832 #13701]  INFO -- : Connected to AMQP broker (prefetch: default)

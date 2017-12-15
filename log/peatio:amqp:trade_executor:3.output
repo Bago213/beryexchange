@@ -1,0 +1,2 @@
+peatio:amqp:trade_executor:3: process with pid 14112 started.
+I, [2017-12-11T17:26:03.416367 #14112]  INFO -- : Connected to AMQP broker (prefetch: 5)

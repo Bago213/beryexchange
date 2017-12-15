@@ -1,0 +1,9 @@
+.col-lg-12
+   h1.page-header
+      | Deposits
+
+.row
+  .col-xs-6
+    = detail_section_tag 
+.row: .col-xs-12
+  = datagrid_table(@admin_deposits_grid, @assets)

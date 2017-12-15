@@ -1,0 +1,9 @@
+.row
+  .col-lg-12
+    h1.page-header
+      | Documents
+
+.row
+  .col-xs-12
+    = datagrid_table(@documents_grid, @assets)
+    a.btn.btn-primary href='#{new_admin_document_path}' = t('.new')

@@ -1,0 +1,18 @@
+<section class="bg-dark text-white">
+  <div class="container text-center">
+
+
+    <% unless current_user %>
+        <h2 class="mb-4">It takes few clicks to join!</h2>
+        <a class="btn btn-light btn-xl sr-button" href="<%= signup_path %>">Join Now!</a>
+    <% else %>
+        <h2 class="mb-4">We are glad! you Joined us</h2>
+        <a class="btn btn-light btn-xl sr-button" href="<%= market_path(current_market) %>">Markets</a>
+        <a class="btn btn-light btn-xl sr-button" href="<%= funds_path %>">Funds</a>
+        <a class="btn btn-light btn-xl sr-button" href="<%= settings_path %>">Settings</a>
+    <% end %>
+
+  </div>
+</section>
+
+

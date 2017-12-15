@@ -1,4 +1,4 @@
-Deploy production server on Ubuntu 14.04
+Deploy production server on Ubuntu 16.04
 -------------------------------------
 
 ### Overview
@@ -60,14 +60,19 @@ Install bundler
 
 ### 3. Install MySQL
 
-    sudo apt-get install mysql-server  mysql-client  libmysqlclient-dev
+    sudo apt-get install software-properties-common
+    sudo add-apt-repository -y ppa:ondrej/mysql-5.6
+    sudo apt-get update
+    sudo apt-get install mysql-server-5.6
+    sudo apt-get install mysql-client-5.6
+    sudo /etc/init.d/mysql stop
+    sudo /etc/init.d/mysql start
 
 ### 4. Install Redis
 
 Be sure to install the latest stable Redis, as the package in the distro may be a bit old:
     
-    sudo apt-get install software-properties-common
-    sudo apt-add-repository -y ppa:rwky/redis
+    sudo add-apt-repository ppa:chris-lea/redis-server
     sudo apt-get update
     sudo apt-get install redis-server
 
@@ -77,10 +82,20 @@ Please follow instructions here: https://www.rabbitmq.com/install-debian.html
 1-- Install Erlang
 2-- Install RabbitMQ
 
-    wget https://packages.erlang-solutions.com/erlang/esl-erlang/FLAVOUR_1_general/esl-erlang_20.1-1~ubuntu~trusty_amd64.deb
-    sudo apt install esl-erlang_20.1-1~ubuntu~trusty_amd64.deb
+    sudo apt-get update
+    wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
+    sudo dpkg -i erlang-solutions_1.0_all.deb
+    sudo apt-get update
+    sudo apt-get install erlang
+    sudo apt-get install erlang-nox
+    sudo apt-get install esl-erlang
     
-    echo "deb https://dl.bintray.com/rabbitmq/debian trusty main" | sudo tee /etc/apt/sources.list.d/bintray.rabbitmq.list
+    or
+    
+    wget http://packages.erlang-solutions.com/site/esl/esl-erlang/FLAVOUR_1_general/esl-erlang_20.1.7-1~ubuntu~xenial_amd64.deb
+    sudo dpkg -i esl-erlang_20.1.7-1~ubuntu~xenial_amd64.deb
+    _________________________________________
+    echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list
     wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -
 
     sudo apt-get update
